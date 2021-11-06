@@ -84,7 +84,7 @@ router.get('/', async (req, res) => {
     res.send({data: listUser});
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/user/:id', async (req, res) => {
     const id = req.params.id;
     const user = await User.findOne({idUser: id}).exec();
 
