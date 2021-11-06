@@ -4,14 +4,14 @@ const {validPassword, validEmail, validPhone} = require("../configs/validator.js
 const {hashPassword, comparePassword} = require("../configs/validLogin");
 
 const User = require("../models/user.js");
-// const user1 = new User({
-//     "password": "54654654Loc@",
-//     "username": "locdeptrai",
-//     "email": "loc@gmail.com",
-//     "phone": "0969422317",
-//     "address": "Binh Duong",
-//     "emoji": "/abc/hihi.jpg"
-// });
+const user1 = new User({
+    "password": "54654654Loc@",
+    "username": "locdeptrai",
+    "email": "loc@gmail.com",
+    "phone": "0969422317",
+    "address": "Binh Duong",
+    "emoji": "/abc/hihi.jpg"
+});
 
 router.post('/join', (req, res) => {
     function genUserID() {
@@ -71,7 +71,7 @@ router.post('/login', async (req, res) => {
             res.send({code: 0, notify: "User not found!"})
         }else{
             if(comparePassword(password, user.password) === false){
-                res.send({code: 0, notify:"Password is incorrect!"});
+                res.send({code: 0, notify:"Password or Email is incorrect!"});
             }else{
                 res.status(200).send({code: 1, notify:"Login successfully!", data: user});
             }
